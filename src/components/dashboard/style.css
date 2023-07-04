@@ -1,0 +1,330 @@
+/* Dashboard Start ==================================================================================================*/
+.dashboard-top-bar,
+.dashboard-customer-list-container,
+.dashboard-kiosk-list-container,
+.dashboard-kiosk-status-container{
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    max-width: 100% !important;
+}
+
+.dashboard-top-bar{
+    height: 8vh;
+}
+
+.dashboard-customer-heading span,
+.dashboard-kiosks-heading span,
+.dashboard-kiosks-status-heading span{
+    color: #949494;
+}
+
+.dashboard-count-container{
+    flex-grow: 1;
+}
+.dashboard-count-sub-container{
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+    /* min-width: 210px; */
+    min-width: 12rem;
+}
+.arrow-right {
+    background-color: #444;
+    height: 50px;
+    width: 50px;
+    right: -30px;
+    bottom: 25px;
+    position: absolute;
+    -webkit-transform: rotate(-45deg);
+}
+.dashboard-count-value{
+    padding: 3px 15px;
+    border-radius: 100px;
+}
+
+.dashboard-customer-list-container,
+.dashboard-kiosk-list-container,
+.dashboard-kiosk-status-container{
+    /* height: 78vh; */
+    height: 75vh;
+}
+
+.dashbocard-customer-searh{
+    position: relative;
+}
+
+#customer-list-search{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+.single-customer-content{
+    font-size: 11px;
+    flex-grow: 1;
+}
+.single-customer-content div{
+    font-weight: 650;
+    font-size: 14px;
+}
+
+.single-customer-list-container{
+    margin-bottom: 0.5rem;
+    position: relative;
+    cursor:default;
+}
+
+.single-customer-list-container.active{
+    border-radius: 5px;
+    background-color: #ffdaba;
+    color: #825232;
+}
+
+.dashboard-single-customer-arrow::after{
+    content: '';
+    width: 100%;
+    background-color: #e3e3e3;
+    border: 1px solid #e3e3e3;
+    position: absolute;
+    /* top: 58px; */
+    top: 40px;
+    left: 1px;
+}
+
+/* =============================== */
+.dashboard-kiosks-search,
+.dashboard-kiosks-dropdown{
+    position: relative;
+}
+
+.dashboard-kiosks-list{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 53vh;
+}
+
+.dashboard-kiosk-status{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* max-height: 70vh; */
+    max-height: 65vh;
+    padding-right: 10px;
+    padding-left: 2px;
+}
+
+/* #kiosks-list{
+    appearance:none;
+} */
+
+/* #kiosks-list-dropdown{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+} */
+
+#kiosks-list-search{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+.single-kiosks-content{
+    font-size: 11px;
+    flex-grow: 1;
+    color: black;
+}
+
+.single-kiosks-content h6,
+.single-kiosks-content span,
+.single-kiosks-content p{
+    margin-bottom: 0px;
+    line-height: 1.5rem;
+}
+
+.single-kiosks-status{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.single-kiosks-list-container{
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.single-kiosks-list-container.active{
+    background:#ffdaba;
+}
+
+.single-kiosks-content::after{
+    content: '';
+    /* width: 100%; */
+    width: 95%;
+    background-color: #e3e3e3;
+    border: 1px solid #e3e3e3;
+    position: absolute;
+    top: 90px;
+    left: 1px;
+}
+
+.box,
+.no-storage-two,
+.no-storage-one{
+    display: flex;
+    border-radius: 5px;
+    /* min-height: 11vh; */
+    margin: 2px 0px;
+    box-shadow: 0px 0px 3px 1px;
+    /* width: 140px; */
+    min-height: 8vh;
+}
+
+.box-heading{
+    /* color: #ffff; */
+    font-size: 16px;
+    border: 1px solid black;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-content{
+    /* color: lightgray; */
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.box,
+.box-1,
+.box-9{
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px 15px;
+    margin: 4px 0px; */
+    padding: 2px 15px;
+    margin: 5px 0px;
+}
+.peripheral-device,
+.mail-drop{
+    border-radius: 5px;
+    margin: 4px 0px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.peripheral-device{
+    border: 2px dashed #885736;
+    /* background-color: #ffdaba; */
+    /* min-height: 30vh; */
+    min-height: 22vh;
+}
+.box-1{
+    display: flex;
+    border-radius: 5px;
+    /* min-height: 13vh; */
+    margin: 4px 0px;
+    min-height: 10vh;
+}
+
+.box-9{
+    display: flex;
+    /* min-height: 13vh; */
+    border-radius: 5px;
+    margin: 4px 0px;
+    min-height: 10vh;
+}
+.mail-drop{
+    display: flex;
+    /* background-color: #d1d1d1; */
+    /* min-height: 40vh; */
+    min-height: 20vh;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 1px;
+}
+.no-storage-two,
+.no-storage-one{
+    /* background-color: #d1d1d1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* Dashboard Kiosk Status Start */
+.status-occupied{
+    background-color: #473e37;
+}
+.status-empty,
+.status-enabled{
+    background-color: #4ca256;
+}
+.status-door-open{
+    background-color: #bd712f;
+}
+.status-door-closed{
+    background-color: #767676;
+}
+.status-ups{
+    background-color: #fa9000;
+}
+.status-offline,
+.status-disabled{
+    background-color: #c10707;
+}
+
+.dashboard-kiosk-status-code{
+    position: fixed;
+    bottom: 35px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 3px;
+    padding: 5px 10px;
+    border: 0px;
+}
+
+.kiosk-status-color{
+    width: 15px;
+    height: 15px;
+    margin: 0px 5px;
+}
+.kiosk-status-text{
+    font-size: 14px;
+    font-weight: 400;
+    padding-right: 10px ;
+}
+.verson-specification{
+    font-size: small;
+    color: gray;
+    margin-right: 2rem;
+}
+
+/* Form Design Start =========================================================================== */
+.kiosks-list{
+appearance: none;
+}
+
+.kiosks-list-dropdown{
+position: absolute;
+right: 15px;
+top: 15px;
+}
+/* Form Design End   ===========================================================================*/
+
+.box-card{
+    box-shadow: 0px 0px 3px 1px;
+}
+
+.status-offline .box-heading{
+    color: #ffff !important;
+}
+.status-offline .box-content {
+    color: lightgray !important;
+}

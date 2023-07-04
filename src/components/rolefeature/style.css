@@ -1,0 +1,202 @@
+.role-top-bar,
+.permissions-list-container,
+.role-list-container{
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    max-width: 100% !important;
+}
+.role-count-container{
+    flex-grow: 1;
+}
+
+.role-count-sub-container{
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+    min-width: 210px;
+}
+
+.single-role-content{
+    font-size: 11px;
+    flex-grow: 1;
+}
+.single-role-content div{
+    font-weight: 650;
+    font-size: 14px;
+}
+
+.single-role-list-container{
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.single-role-list-container.active{
+    border-radius: 5px;
+    background-color: #ffdaba;
+    color: #825232;
+}
+
+.single-role-arrow::after{
+    content: '';
+    width: 100%;
+    background-color: #e3e3e3;
+    border: 1px solid #e3e3e3;
+    position: absolute;
+    top: 40px;
+    left: 1px;
+}
+
+.role-list-container,
+.permissions-list-container{
+    height: 77vh;
+}
+
+.role-heading span{
+    color: #949494;
+}
+.single-role-arrow .fa-trash{
+    color: #c10707 !important;
+    margin-right: 0.5rem;
+}
+
+.role-details .role-name .role-name-heading,
+.role-details .role-ID .role-ID-heading{
+    font-weight: 500;
+    padding: 5px 0px;
+    font-size: 14px;
+}
+.role-details .role-name input,
+.role-details .role-ID input{
+    width: 300px;
+    background-color: #ffffff;
+    border: 0px;
+    padding: 0.4rem;
+    color: #885736;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.role-top-bar .role-count .add-new-role{
+    padding: 5px 10px;
+    background-color: #c3914c;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.role-top-bar .role-count .add-new-role .icon{
+    color: #ffffff !important;
+    padding-right: 10px;
+}
+
+.modal-header .close{
+    color: #c10707;
+}
+
+.modal-footer .modal-close,
+.form-submit-container .modal-close{
+    /* background-color: #c3914c !important; */
+    border: 1px solid #c3914c !important;
+    color: #c10707;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 0.4rem 2.5rem;
+}
+.form-submit-container{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+.permissions-list-container{
+    position: relative;
+}
+
+/* Off canwash Modal Start */
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    display: none;
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    opacity: 0.5;
+    background-color: black;
+    transition: opacity 0.7s;
+}
+
+.off-canvas{
+    width: 400px;
+}
+/* Off canwash Modal End */
+
+/* radio button css Start  */
+.permission-type{
+    /* width: 50%; */
+    width: 100%;
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+.single-permission-item{
+    display:flex;
+    align-items:center;
+    padding: 0.5rem 0.5rem;
+    background-color: var(--bs-white);
+    margin: 0.5rem 0rem;
+    border-radius: 5px;
+}
+.single-permission-item .permission-item-name{
+    /* flex-basis: 20%; */
+    flex-basis: 45%;
+    color:#825232;
+    font-weight: 500;
+}
+.selecotr-item{
+    position:relative;
+    flex-basis:calc(90% / 3);
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+label{
+    margin: 0rem;
+}
+.selector-item_radio{
+    appearance:none;
+    display:none;
+}
+.selector-item_label{
+    font-size: 0.7rem;
+    font-weight: bold;
+    position: relative;
+    width: 100%;
+    /* text-align: center; */
+    border-radius: 9999px;
+    transition-duration: .5s;
+    transition-property: transform, color, box-shadow;
+    transform: none;
+    padding: 0.3rem 0rem;
+    border: 2px solid #c3914c;
+    color: #c3914c;
+}
+.selector-item_label .icon{
+    font-size: 20px;
+    margin-right: 0.4rem;
+}
+
+.selector-item_radio:checked + .selector-item_label{
+    background-color:#c3914c;
+    box-shadow:0 0 4px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.5);
+    transform:translateY(-2px);
+}
+.selector-item_radio:checked + .selector-item_label .icon,
+.selector-item_radio:checked + .selector-item_label{
+    color:var(--bs-white) !important;
+}
+/* radio button css End  */

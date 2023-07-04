@@ -1,0 +1,251 @@
+.customer-top-bar,
+.user-customer-list-container,
+.user-list-container{
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    max-width: 100% !important;
+}
+
+.user-customer-list-container,
+.user-list-container{
+    height: 70vh;
+}
+
+.customer-count-container{
+    flex-grow: 1;
+}
+
+.customer-count-sub-container{
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+    min-width: 210px;
+}
+
+.single-customer-content{
+    font-size: 11px;
+    flex-grow: 1;
+}
+.single-customer-content div{
+    font-weight: 650;
+    font-size: 14px;
+}
+
+.single-customer-list-container{
+    margin-bottom: 0.5rem;
+    position: relative;
+    cursor: default;
+}
+
+.single-customer-list-container.active{
+    border-radius: 5px;
+    background-color: #ffdaba;
+    color: #825232;
+}
+
+.user-single-customer-arrow::after{
+    content: '';
+    width: 100%;
+    background-color: #e3e3e3;
+    border: 1px solid #e3e3e3;
+    position: absolute;
+    top: 40px;
+    left: 1px;
+}
+
+.customer-heading span,
+.user-heading span{
+    color: #949494;
+}
+.user-single-customer-arrow .fa-trash{
+    color: #c10707 !important;
+    margin-right: 2rem;
+}
+
+.customer-details .customer-name .customer-name-heading,
+.customer-details .customer-ID .customer-ID-heading{
+    font-weight: 500;
+    padding: 5px 0px;
+    font-size: 14px;
+}
+.customer-details .customer-name input,
+.customer-details .customer-ID input{
+    width: 300px;
+    background-color: #ffffff;
+    border: 0px;
+    padding: 0.4rem;
+    color: #885736;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* modal popup css */
+
+
+.single-user-input-field{
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .single-user-input-field input,
+  .single-user-input-field select,
+  .single-user-input-field textarea{
+      display: block;
+      background: transparent;
+      border: solid 1px #ccc;
+      transition: all .3s ease;
+      /* padding: 0 15px; */
+  }
+  .single-user-input-field input:focus,
+  .single-user-input-field select:focus,
+  .single-user-input-field textarea:focus{
+      border-color: blue
+  }
+  /* .single-user-input-field input:focus + label, */
+  .single-user-input-field input:valid + label,
+  /* .single-user-input-field select:focus + label, */
+  .single-user-input-field select:valid + label,
+  /* .single-user-input-field textarea:focus + label, */
+  .single-user-input-field textarea:valid + label{
+      font-size: 11px;
+      top: -5px
+  }
+  .single-user-input-field input:focus + label,
+  .single-user-input-field select:focus + label,
+  .single-user-input-field textarea:focus + label{
+      color: #825232;
+  }
+  .single-user-input-field label{
+    position: absolute;
+    cursor: text;
+    z-index: 2;
+    top: -7px !important;
+    left: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #fff;
+    padding: 0 5px;
+    color: #a0a0a0;
+    transition: all .3s ease
+  }
+
+.single-user-input-field{
+    position: relative;
+    margin: 0rem 0.5rem;
+    min-width: 7rem;
+}
+.single-user-input-field #user-mail-location-input{
+    min-width: 12.5rem;
+}
+
+.single-user-input-field select{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+.modal-footer{
+    justify-content: start;
+}
+
+.modal-header,.modal-body,.modal-footer{
+    padding: 1.5rem;
+}
+
+.modal-header{
+    align-items: center;
+}
+
+.modal-content{
+    margin: 2.5rem;
+}
+
+.modal-header .close{
+    color: #c10707;
+}
+
+.modal-footer .modal-close{
+    /* background-color: #c3914c !important; */
+    border: 1px solid #c3914c !important;
+    color: #c10707;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 0.4rem 2.5rem;
+}
+
+.user-table-filter-search-container,
+.user-table-filter-dropdown-container{
+    position: relative;
+    flex-grow: 1;
+}
+#user-overall-search{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+.user-customer-search{
+    position: relative;
+}
+
+#user-customer-list-search{
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
+/* Form Design Start =========================================================================== */
+.users-list{
+appearance: none;
+}
+
+.users-list-dropdown{
+position: absolute;
+right: 15px;
+top: 10px;
+}
+/* Form Design End   ===========================================================================*/
+
+.availablity-box{
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-bottom: 15px;
+}
+.availablity-status-box{
+    width: 1rem;
+    height: 1rem;
+    margin: 0rem 0.5rem;
+}
+.available{
+    background-color: #4ca256;
+}
+.not-available{
+    background-color: #c10707;
+}
+
+.modal-footer .form-color-code span{
+    font-size: 12px;
+}
+
+/* Top overall filter CSS Start */
+.user-table-filter-container #user-overall-search-input{
+    background-color: #f2f2f2;
+}
+/* Top overall filter CSS End */
+
+.user-details{
+height: 100%;
+overflow: scroll;
+}
+
+.py-2-5{
+    padding-top: 0.7rem!important;
+    padding-bottom: 0.7rem!important;
+}
+
+.user-customer-list{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 55vh;
+}
