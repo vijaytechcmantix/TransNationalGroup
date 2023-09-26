@@ -1,0 +1,21 @@
+#loader img{
+    position: absolute;
+    width: 7rem;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#loader{
+    position: absolute;
+    background-color: rgb(0, 0, 0,0.5);
+    border-radius: 10px;
+    opacity: 0.9;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

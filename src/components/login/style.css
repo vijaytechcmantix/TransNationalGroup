@@ -1,0 +1,63 @@
+.Login-mian-wrapper{
+    background-image: url('../../assets/img/login-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.login-container{
+    display: flex;
+    justify-content: center;
+}
+.login-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-top: 3rem;
+    padding: 3rem 3rem;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f5f2 100%);
+    border-radius: 20px;
+    box-shadow: 0 0 1px 0px grey !important;
+}
+
+.login-wrapper .login-logo img{
+    width: 220px;
+}
+
+.login-wrapper .login-credentials input{
+    margin-bottom: 1rem;
+}
+
+.login-wrapper .login-credentials .view-password-icon{
+    float: right;
+    position: relative;
+    z-index: 2;
+    margin-top: -3rem;
+    margin-right: 10px;
+}
+.login-captcha-reload{
+    font-size: 25px;
+}
+#togglePassword{
+    color: gray;
+}
+
+#rc-imageselect, .g-recaptcha {
+    transform:scale(1.3);
+    -webkit-transform:scale(1.3);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+}
+
+@media screen and (max-width: 769px){
+    #rc-imageselect, .g-recaptcha {
+        transform:scale(1);
+        -webkit-transform:scale(1);
+        transform-origin:0 0;
+        -webkit-transform-origin:0 0;
+    }
+
+    .login-wrapper{
+        width: 60%;
+    }
+}

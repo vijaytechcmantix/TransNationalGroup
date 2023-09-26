@@ -1,0 +1,206 @@
+.customer-top-bar,
+.kiosk-customer-list-container,
+.kiosk-list-container{
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    max-width: 100% !important;
+}
+
+.kiosk-customer-list-container,
+.kiosk-list-container{
+    height: 75vh;
+}
+
+.customer-count-container{
+    flex-grow: 1;
+}
+
+.customer-count-sub-container{
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+    min-width: 210px;
+}
+
+.single-customer-content{
+    font-size: 11px;
+    flex-grow: 1;
+}
+.single-customer-content div{
+    font-weight: 650;
+    font-size: 14px;
+}
+
+.single-customer-list-container{
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.single-customer-list-container.active{
+    border-radius: 5px;
+    background-color: #ffdaba;
+    color: #825232;
+}
+
+.single-kiosk-customer-arrow::after{
+    content: '';
+    width: 100%;
+    background-color: #e3e3e3;
+    border: 1px solid #e3e3e3;
+    position: absolute;
+    top: 40px;
+    left: 1px;
+}
+
+.customer-heading span,
+.kiosk-heading span{
+    color: #949494;
+}
+.single-kiosk-customer-arrow .fa-trash{
+    color: #c10707 !important;
+    margin-right: 2rem;
+}
+
+.customer-details .customer-name .customer-name-heading,
+.customer-details .customer-ID .customer-ID-heading{
+    font-weight: 500;
+    padding: 5px 0px;
+    font-size: 14px;
+}
+.customer-details .customer-name input,
+.customer-details .customer-ID input{
+    width: 300px;
+    background-color: #ffffff;
+    border: 0px;
+    padding: 0.4rem;
+    color: #885736;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.customer-top-bar .customer-count .add-new-customer{
+    padding: 5px 10px;
+    background-color: #c3914c;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.customer-top-bar .customer-count .add-new-customer .icon{
+    color: #ffffff !important;
+    padding-right: 10px;
+}
+
+.modal-footer{
+    justify-content: start;
+}
+
+.modal-header{
+    align-items: center;
+}
+
+.modal-content{
+    margin: 2.5rem;
+}
+
+
+.offcanvas-body .offcanvas-close{
+    /* background-color: #c3914c !important; */
+    border: 1px solid #c3914c !important;
+    color: #c10707;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 0.4rem 2.5rem;
+}
+
+.kiosk-customer-search{
+    position: relative;
+}
+
+#kiosk-customer-list-search{
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+.kiosk-table-search{
+    position: relative;
+}
+#kiosk-table-list-search{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+/* Off canwash Modal Start */
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    display: none;
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    opacity: 0.5;
+    background-color: black;
+    transition: opacity 0.7s;
+}
+
+.kiosk-offcanvas{
+    width: 700px !important;
+    /* background-color: #ffffff; */
+    /* height: 100vh; */
+    /* position: absolute; */
+    /* top: 0px; */
+    /* right: -400px; */
+    /* display: none; */
+    /* z-index: 5; */
+    /* transition: right 0.7s; */
+}
+/* Off canwash Modal End */
+
+/* Form Design Start =========================================================================== */
+.kiosks-list{
+appearance: none;
+}
+
+.kiosks-list-dropdown{
+position: absolute;
+right: 15px;
+top: 10px;
+}
+/* Form Design End   ===========================================================================*/
+
+.availablity-box{
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-bottom: 15px;
+}
+.availablity-status-box{
+    width: 1rem;
+    height: 1rem;
+    margin: 0rem 0.5rem;
+}
+.available{
+    background-color: #4ca256;
+}
+.not-available{
+    background-color: #c10707;
+}
+
+.modal-footer .form-color-code span{
+    font-size: 12px;
+}
+
+.kiosk-customer-list,
+.kiosk-details{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 60vh;
+}
+
+.kiosk-details{
+    height: 65vh;
+}

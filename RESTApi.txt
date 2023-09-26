@@ -1,0 +1,274 @@
+https://leaptron.dscloud.me:8100/RESTApi.txt
+
+Token: Json Web Token
+Base URL: https://leaptron.dscloud.me:8100 (temporary)
+Headers: Authorization
+Format: BEARER <Token>       // <Token> can be any string for test
+
+
+Remark: The Return values below is for HTTP status code 200
+Other Status code are as follows:
+400 - Bad Request
+401 - Not Authorized (Login fail)
+403 - Not Authorized (Token expired)
+404 - Not Found
+405 - Method not allowed (bad query)
+409 - Duplicate Value (Existing DB already has that value)
+500 - Gateway Error (Error accessing to DB)
+
+
+==================== [Login] ====================================
+Description: Login to obtain the JWT (Json Web Token or OAuth2 Access Token)
+Path: /login
+Body: {"username":"<username>","password":"<password>"}
+Return: {"token":"<token>", "Expiry":"2022-10-01 20:00:00", "Feature":[{"f":1,"r":3},{"f":2,"r":2}....],"UserID":1,"CompanyID":1}
+Status: To be Done
+
+Description: Forget password
+Path: /forgot
+Body: {"username":"<username>"}
+Return: (200) -URL link to reset password is sent to username's Email
+
+Description: Reset Password
+Path: /resetpassword
+Body: {"password":"<password>"}   // frontend please validate the password entered matches
+Return: (200) - Ok   (400) - Bad Request
+
+
+====================== User Type} ==========================================
+Description: Get User Type 
+Path: /get
+Body: {"query": "UserTypeGet"}
+Return: (200) - [{"UserType":"Trans"}]
+
+====================== [User} ==========================================
+Description: Get user information  // 0 - means get all Users 
+Path: /get
+Body: {"query": "UserGet <UserID>, '<CompanyID>', '<UserType>'"}
+Return: {"UserID":1,"Username":"peterwong","Company":"Leaptron","UserGroup":"Admin"}
+Status: 
+
+Description: Add a new user  
+Path: /post
+Body: {"query": "UserAdd '<UserName>','<Company>', '<UserGroup>', '<Email>', <UserID>"}
+Return: {"LastInsertID": 10}
+
+Description: Update existing user information
+Path: /put/user
+Body: {"query": "UserUpdate <UserID>,'<UserName>','<Company>', '<UserGroup>', '<Email>', <UserID>"}
+Return: None
+
+Description: Delete existing user 
+Path: /delete
+Body: {"query": "<UserID>,'<UserName>'"}
+Return: None
+
+
+====================== [Feature Type} ==========================================
+
+Description: Get Feature Type [Web or Kiosk] 
+Path: /get
+Body: {"query": "FeatureTypeGet"}
+Return: (200) - [{"FeatureType":"Kiosk"},{"FeatureType":"Web}]
+Status: Need to check
+
+====================== [Features} ==========================================
+
+Description: Get all the Features 
+Path: /get
+Body: {"query": "FeatureGet"
+Return: (200) - [{"ID":1,"Feature":"Access to Kiosk","FeatureType":"Kiosk"},{"ID":2,"Feature":"Access to Web","FeatureType":"Web"}...]
+Status: Done
+
+====================== [Access Right} ==========================================
+
+Description: Get all Access Rights
+Path: /get
+Body: {"query": "AccessRightGet"}
+Return: (200) - [{"ID":1,"AccessRight":"No Access"},{"ID":2,"AccessRight":"View Access"},{"ID":3,"AccessRight":"Full Access"}]
+Status: Done
+
+====================== [User Group} ==========================================
+Description: Get all the user group
+Path: /get
+Body: {"query": "UserGroupFeatureGet '<CompanyID>'"    // <CompanyID> = DBS
+Return: (200) - [{"ID":1,"UserGroupID":"DBS-Admin","Description":"Administrator (DBS)"}...]
+Status: Not Done Yet
+
+Description: Get all UserGroup Features and Access Rights
+Path: /get
+Body: {"query": "UserGroupFeatureGet '<UserGroupID>'"    // <UserGrouID> = DBS-Admin
+Return: (200) - [{"ID":1,"UserGroup":"DBS-Admin","Description":"Administrator (DBS)"}...]
+Status: Not Done yet
+
+Description: Add a new user group  
+Path: /post
+Body: {"query": "UserGroupAdd '<CompanyID>','<UserGroupID>','<Description>', <UserID>"}
+Return: (200) - {"LastInsertID": 10}
+Status: Not Done Yet
+
+Description: Update existing user group information
+Path: /put
+Body: {"query": "UserGroupUpdate '<UserGroupID>','[{"Access To Web":"View Access"},{...}...]', <UserID>"}
+Return: 
+Status: Not Done Yet
+
+
+Description: Delete existing user group 
+Path: /delete
+Body: {"query": "UserGroupDelete <ID>, <UserID>"}   // <ID> is the UserGroup table primary key (index)
+Return: 
+Status Not Done Yet
+
+
+=====================  [Company] =================================
+Description: Get all CompanyType
+Path: /get
+Body: {"query":"CompanyTypeGet"}
+REturn: [{"CompanyType":"Customer"},{"CompanyType":"Trans"}]
+Status: Done
+
+Description: Get all company information by Type
+Path: /get
+Body: {"query": "CompanyGet 'Customer'"}   // To get all CustomerType, use "CompanyGet ''" 
+Return: [{"CompanyID":"DBS","CompanyName":"Development Bank of Singapore","CompanyType":"Customer"},{"CompanyID":"UOB","CompanyName":"United Overseas Bank","CompanyType":"Customer"}]
+Status: Done
+
+Description: Add a new company
+Path: /post
+Body: {"query": "CompanyAdd '<CompanyID>','<CompanyName>','<CompanyType>','<UserID>'"}
+Return: (200) - Ok
+Status: Done
+
+Description: UModify existing company information
+Path: /put
+Body: {"query": "CompanyModify '<oldCompanyID>', '<newCompanyID>' '<newCompanyName>','<newCompanyType>','<UserID>'"}
+Return: (200) - Ok
+Status: Done
+
+Description: Delete existing company 
+Path: /delete
+Body: {"query": "CompanyDelete "ID":<ID>, "UserID":<UserID>"}
+Return: (200) - Ok
+Status: Done
+
+=====================  [Location] =================================
+
+Description: Get Location information
+Path: /get
+Body: {"query": "LocationGet '<companyID>',<ID>}  // ID=0 means get all Location for the selected CompanyID, e.g. DBS
+Return: [{"LocationID":"DBSLoc1","LocationName":"DBS Location 1"}...]
+Status: Done
+
+Description: Add a new Location
+Path: /post
+Body: {"query": "LocationAdd '<CompanyID>','<LocationID>','<LocationName>',<UserID>"}
+Return: (200) - Ok
+Status: Done
+
+Description: Modify existing Location information
+Path: /put
+Body: {"query": "LocationModify '<OldLocationID>','<NewLocationID>','<NewLocationName>','<CompanyID>',' <UserID>'"}
+Return: (200) - Ok
+
+Description: Delete existing Location of a particular Company
+Path: /delete
+Body: {"query": "LocationDelete '<LocationID>','<UserID>'"}
+Return: (200) - Ok
+
+=====================  [Department] =================================
+
+Description: Get all department for a COmpany information
+Path: /get
+Body: {"query": "DepartmentGet '<companyID>'} 
+Return: 
+Status: 
+
+========================= [Dashboard] ===================================
+
+
+
+========================= [ Kiosk ] =========================================
+Description: Get the LockerCellType
+Path: /post
+Body: {"query":"LockerCellTypeGet <LockerCellTypeID>"} // LockerCellTypeID=0 means get all the LockerCellType
+Return: [{"LockerCellTypeID":1,"LockerCellType":"Type A","Length":2,"Width":4,"Height":3}]
+Status: Not Done yet
+
+Description: Create a new LockerCellType
+Path: /post
+Body: {"query":"LockerCellTypePost '<LockerCellType>', <Length>, <Width>, <Height>}
+Return: {"LastInsertID":5}
+Status: Not Done yet
+
+Decription: Create a locker at the server for a particular Customer [Use by Kiosk App]
+Path: /post
+Body: {"query":"LockerPost '<LockerName>','}
+Status: Not Done yet
+
+========================= [ Faults ] =========================================
+
+Decription: Get Kiosk Box Faults
+Path: /post
+Body: {"query":"KioskBoxFaultGet}
+Return: (200) - [{"FaultID":"Door Dented"},{"FaultID":"Hindge Broken"},{"FaultID":"None"},{"FaultID":"Unable to Open/Close"}]
+Status: Done
+
+Decription: Add Kiosk Faults
+Path: /post
+Body: {"query":"LockerFaultInsert '<fault>'"}
+Return: (200) - [{"FaultID":"Lock Broken"}...]
+Status: Done
+
+Decription:Update Kiosk Box Fault
+Path: /put
+Body: {"query":"KioskBoxFaultUpdate <FaultID>,'<NewFault>'}
+Return: (200) - Ok
+Status: Done
+
+Decription: Delete Kiosk Box Fualt
+Path: /delete
+Body: {"query":"KioskBoxFaultDelete <FaultID>}
+Return: (200) - Ok
+Status: Done
+
+
+
+
+
+The following section contains the API functions for MailTrack (TransNation app) to call
+
+====================== [MaillBag Transaction Sync API] =====================
+
+1. Get MailBag Transactions - Allow MailTrack to obtain all the MailBag transactions that occured at the Locker
+
+
+
+
+
+2. Get Outgoing Mail Transactions - Allow MailTrack to obtain all the Outgoing Mail Transaction 
+
+
+
+3. Set Departments of Customer
+
+
+4. Get Departments
+
+5. Get Locations
+
+
+6. Set Users (unloading users to Kiosk Server)
+
+7. Get Device Activities
+
+
+Description: Get Company
+Path: /get/company
+Body: None
+ReturnL [{"CompanyID":1,"Company":"DBS"},{"CompanyID":2,"Company":"Trans"}]
+
+Description: Get UserGroup
+Path: /get/UserGroup
+Body: {"company":"<company>"}
+Return: 

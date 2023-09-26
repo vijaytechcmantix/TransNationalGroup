@@ -1,0 +1,139 @@
+.customer-top-bar,
+ .customer-list-container{
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            max-width: 100% !important;
+         }
+        .customer-count-container{
+            flex-grow: 1;
+        }
+
+        .customer-count-sub-container{
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            font-weight: 500;
+            min-width: 210px;
+        }
+
+        .single-customer-content{
+            font-size: 11px;
+            flex-grow: 1;
+        }
+        .single-customer-content div{
+            font-weight: 650;
+            font-size: 14px;
+        }
+
+        .single-customer-list-container{
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .single-customer-list-container.active{
+            border-radius: 5px;
+            background-color: #ffdaba;
+            color: #825232;
+        }
+
+        .single-customer-arrow::after{
+            content: '';
+            width: 100%;
+            background-color: #e3e3e3;
+            border: 1px solid #e3e3e3;
+            position: absolute;
+            /* top: 58px; */
+            top: 40px;
+            left: 1px;
+        }
+
+        .customer-list-container{
+            height: 75vh;
+        }
+
+        .customer-customer-list{
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 66vh;
+        }
+
+        .customer-heading span{
+            color: #949494;
+        }
+        .single-customer-arrow .fa-trash{
+            color: #c10707 !important;
+            margin-right: 2rem;
+        }
+
+        .customer-details .customer-name .customer-name-heading,
+        .customer-details .customer-ID .customer-ID-heading{
+            font-weight: 500;
+            padding: 5px 0px;
+            font-size: 14px;
+        }
+        .customer-details .customer-name input,
+        .customer-details .customer-ID input{
+            width: 300px;
+            background-color: #ffffff;
+            border: 0px;
+            padding: 0.4rem;
+            color: #885736;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .customer-top-bar .customer-count .add-new-customer{
+            padding: 5px 10px;
+            background-color: #c3914c;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .customer-top-bar .customer-count .add-new-customer .icon{
+            color: #ffffff !important;
+            padding-right: 10px;
+        }
+
+        /* modal popup css */
+
+        .modal-header .close{
+            color: #c10707;
+        }
+
+        .modal-footer .modal-close{
+            /* background-color: #c3914c !important; */
+            border: 1px solid #c3914c !important;
+            color: #c10707;
+            border-radius: 5px;
+            font-weight: 500;
+            padding: 0.4rem 2.5rem;
+        }
+
+        /* Off canwash Modal Start */
+        .backdrop{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            display: none;
+            width: 100%;
+            height: 100%;
+            outline: 0;
+            opacity: 0.5;
+            background-color: black;
+            transition: opacity 0.7s;
+        }
+
+        .customer-offcanvas{
+            /* width: 400px; */
+            /* background-color: #ffffff;
+            height: 100vh;
+            position: absolute;
+            top: 0px;
+            right: -400px;
+            z-index: 5;
+            display: none;
+            transition: right 0.7s; */
+        }
