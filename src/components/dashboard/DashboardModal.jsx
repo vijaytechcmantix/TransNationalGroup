@@ -33,7 +33,7 @@ export default function DashboardModal({ title, showPopup, tableData, tableHeadi
             show={showModal} 
             onHide={handleClose}
             centered
-            size='lg'
+            size='xl'
         >
             <div className="modal-header p-3" style={{ backgroundColor : '#f2f2f2' }}>
                 <h4 className="modal-title">{ title }</h4>
@@ -57,7 +57,10 @@ export default function DashboardModal({ title, showPopup, tableData, tableHeadi
                             tableData.map((data,index)=>{
                                     return(<tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td>{data.userName}</td>
+                                        <td>{data?.KioskID || ''}</td>
+                                        <td>{data?.DeviceNo || ''}</td>
+                                        <td>{data?.LocationID || ''}</td>
+                                        <td>{data?.CompanyID || ''}</td>
                                         {/* <td>
                                             <FontAwesomeIcon 
                                                 onClick={()=>{}} 

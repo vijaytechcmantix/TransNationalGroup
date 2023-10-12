@@ -46,6 +46,7 @@ export function  UserTopbar ({setSearchFilterData, customerID, setDropdownFilter
             value :''
         }
     ]);
+
     const [activeFilter,setActiveFilter] = useState({
         PCCode : false,
         MailbagCPCode : false,
@@ -54,6 +55,7 @@ export function  UserTopbar ({setSearchFilterData, customerID, setDropdownFilter
         GroupID : false,
         CompanyID : false
     });
+
     const [dropdownDetails,setDropdownDetails] = useState({
         PCCode : [],
         MailbagCPCode : [],
@@ -108,6 +110,7 @@ export function  UserTopbar ({setSearchFilterData, customerID, setDropdownFilter
                     GroupID : groupID,
                     CompanyID : companyID
                 };
+
                 setDropdownDetails(dropdown_Details);
             }).catch((error) => {
                 console.log(error);
@@ -136,8 +139,7 @@ export function  UserTopbar ({setSearchFilterData, customerID, setDropdownFilter
         setDropdownFilter(item);
     }
 
-    return <>
-    {console.log(dropdownDetails?.PCCode)}
+    return <> 
         <div className="customer-top-bar px-3 py-2-5 d-flex justify-content-between align-items-center mb-2">
             <div className="customer-title"><span className="Page-heading">Users</span></div>
         </div>
@@ -337,43 +339,39 @@ export function  UserDetails ({customerID, dropdownFilterData, searchFilterData}
     const [sortByFirstName,setSortByFirstName] = useState(true);
     const [sortByLastName,setSortByLastName] = useState(true);
     const [editUserAccessModal,setEditUserAccessModal] = useState({
-        show : false,
+        show        : false,
         userDetails : {}
     });
 
     useEffect(()=>{
-        setTempUserDetailsDataTable(userDetailsDataTable);
-    },[userDetailsDataTable]);
-
-    useEffect(()=>{
         SearchFilter({
-            value : searchFilterData,
+            value       : searchFilterData,
             searchField : ['all'],
-            data : userDetailsDataTable,
-            success: function(data){
+            data        : userDetailsDataTable,
+            success     : function(data){
                 setTempUserDetailsDataTable(data);
             },
-            error: function(err){
+            error       : function(err){
                 console.log(err);
             }
         });
     },[searchFilterData]);
 
     useEffect(()=>{
-        // console.log('dropdownFilterData');
+
         let tempData = [...userDetailsDataTable];
 
         for(let i = 0;i < dropdownFilterData.length;i++) {
             if(dropdownFilterData[i].value != '' && dropdownFilterData[i].name != 'CompanyID')
             {
                 SearchFilter({
-                    value : dropdownFilterData[i].value,
+                    value       : dropdownFilterData[i].value,
                     searchField : [dropdownFilterData[i].name],
-                    data : tempData,
-                    success: function(data) {
+                    data        : tempData,
+                    success     : function(data) {
                         tempData = [...data];
                     },
-                    error: function(err) {
+                    error       : function(err) {
                         console.log(err);
                     }
                 });
@@ -387,8 +385,8 @@ export function  UserDetails ({customerID, dropdownFilterData, searchFilterData}
     useEffect(()=>{
         if(customerID != ''){
             getUser({customerID}).then((data)=>{
-                console.log(data);
                 setUserDetailsDataTable(data);
+                setTempUserDetailsDataTable(data);
             }).catch((error)=>{
                 console.log(error);
             });
@@ -449,7 +447,7 @@ export function  UserDetails ({customerID, dropdownFilterData, searchFilterData}
 
     function editUserGroup(data){
         setEditUserAccessModal({
-            show : true,
+            show        : true,
             userDetails : data
         });
     }

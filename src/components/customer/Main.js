@@ -73,11 +73,16 @@ const CustomerList = ({ setActiveCustomerDetails, addCompany, editCustomer }) =>
                             CompanyID: item.CompanyID,
                             user: user
                         }).then((data) => {
+                            
                             if (data.status == 200) {
                                 resetCustomerDetails();
                                 NotificationManager.success('Company deleted successfully..!', 'Congratulations!', 3000);
                             } else if (data.status == 404) {
                                 NotificationManager.error('Incorrect requst..!', 'Error!', 3000);
+                            } else if (data.status == 400) {
+                                data.text().then(result => {
+                                    NotificationManager.error(result, 'Error!', 3000);
+                                });
                             } else {
                                 NotificationManager.error('Something went wrong..!', 'Error!', 3000);
                             }

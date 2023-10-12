@@ -198,7 +198,11 @@ const LocationList = ({CompanyID, locationDetailsPopup, resetLoc, UserID}) => {
                             showToast('success','Location deleted successfully..!');
                         }else if(data.status == 404){
                             showToast('error','Incorrect requst..!');
-                        }else{
+                        } else if (data.status == 400) {
+                            data.text().then(result => {
+                                showToast('error', result);
+                            });
+                        } else{
                             showToast('error','Something went wrong..!');
                         }
                     })

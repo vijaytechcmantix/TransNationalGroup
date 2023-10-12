@@ -98,16 +98,20 @@ export function getUserType(CompanyID){
 }
 
 export function getUserPCCode(CompanyID){
+
     return fetch(BaseUrl+'/get',{
         method: 'POST',
         headers : requestHeader,
-        body: JSON.stringify({"query": "CPCodeGet '"+ CompanyID +"'"})
+        body: JSON.stringify({"query": "PCCodeGet '"+ CompanyID +"'"})
     })
-    .then((response) => {   
+    .then(response => {
+        
         if(response?.status != 404 && response?.status != 500){
-            return response.json().then(result => {
-                return result
+            
+            return response.text().then(result => {
+                return JSON.parse(result);
             });
+
         }else{
             return [];
         }
@@ -666,9 +670,10 @@ export function getKioskList(CompanyID){
 export function getKioskOfflineTotal({companyID}){ 
     requestHeader['Authorization'] = `BEARER ${ atob(localStorage.getItem("accessToken") != null ? localStorage.getItem("accessToken") : '') }`;
     return fetch(BaseUrl+'/get',{
-        method: 'POST',
+        method  : 'POST',
         headers : requestHeader,
-        body: JSON.stringify({"query" : "KioskOfflineTotalGet '"+ companyID +"'"})
+        // body    : JSON.stringify({"query" : "KioskOfflineTotalGet '"+ companyID +"'"})
+        body    : JSON.stringify({"query" : "KioskOfflineTotalGet ''"})
     })
     .then((response) => {
         if(response?.status != 404 && response?.status != 500){
@@ -686,7 +691,8 @@ export function getKioskStickerLowTotal({companyID}){
     return fetch(BaseUrl+'/get',{
         method: 'POST',
         headers : requestHeader,
-        body: JSON.stringify({"query":"KioskStickerLowTotalGet '"+ companyID +"'"})
+        // body: JSON.stringify({"query":"KioskStickerLowTotalGet '"+ companyID +"'"})
+        body: JSON.stringify({"query":"KioskStickerLowTotalGet ''"})
     })
     .then((response) => {
         if(response?.status != 404 && response?.status != 500){
@@ -705,7 +711,67 @@ export function getKioskUPSActivatedTotal({companyID}){
     return fetch(BaseUrl+'/get',{
         method: 'POST',
         headers : requestHeader,
-        body: JSON.stringify({"query":"KioskUPSActivatedTotalGet '"+ companyID +"'"})
+        // body: JSON.stringify({"query":"KioskUPSActivatedTotalGet '"+ companyID +"'"})
+        body: JSON.stringify({"query":"KioskUPSActivatedTotalGet ''"})
+    })
+    .then((response) => {
+        if(response?.status != 404 && response?.status != 500){
+            return response.json();
+        }else{
+            return [];
+        }
+    }) 
+    .catch((err) => {
+        return err;
+    });
+}
+
+export function getKioskOffline({companyID}){ 
+    requestHeader['Authorization'] = `BEARER ${ atob(localStorage.getItem("accessToken") != null ? localStorage.getItem("accessToken") : '') }`;
+    return fetch(BaseUrl+'/get',{
+        method: 'POST',
+        headers : requestHeader,
+        // body: JSON.stringify({"query" : "KioskOfflineGet '"+ companyID +"'"})
+        body: JSON.stringify({"query" : "DashboardOnlineKioskGet"})
+    })
+    .then((response) => {
+        if(response?.status != 404 && response?.status != 500){
+            return response.json();
+        }else{
+            return [];
+        }
+    }) 
+    .catch((err) => {
+        return err;
+    });
+}
+
+export function getKioskStickerLow({companyID}){ 
+    return fetch(BaseUrl+'/get',{
+        method: 'POST',
+        headers : requestHeader,
+        // body: JSON.stringify({"query":"KioskStickerLowGet '"+ companyID +"'"})
+        body: JSON.stringify({"query" : "DashboardStickerLowKioskGet"})
+    })
+    .then((response) => {
+        if(response?.status != 404 && response?.status != 500){
+            return response.json();
+        }else{
+            return [];
+        }
+    }) 
+    .catch((err) => {
+        return err;
+    });
+}
+
+export function getKioskUPSActivated({companyID}){ 
+    requestHeader['Authorization'] = `BEARER ${ atob(localStorage.getItem("accessToken") != null ? localStorage.getItem("accessToken") : '') }`;
+    return fetch(BaseUrl+'/get',{
+        method: 'POST',
+        headers : requestHeader,
+        // body: JSON.stringify({"query":"KioskUPSActivatedGet '"+ companyID +"'"})
+        body: JSON.stringify({"query" : "DashboardUPSKioskGet"})
     })
     .then((response) => {
         if(response?.status != 404 && response?.status != 500){
@@ -887,7 +953,6 @@ export function getCPCodeGet(customerID){
         method: 'POST',
         headers : requestHeader,
         body: JSON.stringify({"query":"CPCodeGet '"+ customerID +"'"})
-        // body: JSON.stringify({"query":"PCCodeGet '"+ customerID +"'"})
     })
     .then((response) => {
         if(response?.status != 404 && response?.status != 500){

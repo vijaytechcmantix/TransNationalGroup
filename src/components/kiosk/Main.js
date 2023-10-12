@@ -250,7 +250,11 @@ const KioskList = ({ setKioskPopupDetails, CustomerID, UserID, refreshID}) =>{
                         {
                             showToast('error','Kiosk did not exist..!');
                             return;
-                        }else{
+                        } else if (result.status == 400) {
+                            result.text().then(data => {
+                                showToast('error', data);
+                            });
+                        } else{
                             showToast('error','Something went wrong..!');
                             return;
                         }

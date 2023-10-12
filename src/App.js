@@ -25,6 +25,7 @@ function App() {
 
 
   useEffect(()=>{
+    // console.log(user);
     user.loggedin === 'yes' ? setIsLoggedIn(true) : setIsLoggedIn(false);
   },[user]);
 

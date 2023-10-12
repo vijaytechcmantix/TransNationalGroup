@@ -3,7 +3,17 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownWideShort,faArrowUpWideShort,faChevronRight,faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Search from '@mui/icons-material/Search';
-import { getLocationInformation, getAllCompany, getKioskOfflineTotal, getKioskStickerLowTotal, getKioskUPSActivatedTotal, getKioskList, getKiosk } from "../../services/api/api";
+import { 
+    getLocationInformation, 
+    getAllCompany, 
+    getKioskOfflineTotal, 
+    getKioskStickerLowTotal, 
+    getKioskUPSActivatedTotal, 
+    getKioskOffline, 
+    getKioskStickerLow, 
+    getKioskUPSActivated, 
+    getKioskList, 
+    getKiosk } from "../../services/api/api";
 import { FirstSlave, SecondSlave } from './Slave';
 import DashboardModal from './DashboardModal';
 
@@ -18,27 +28,29 @@ const DashboardTopbar=({ companyID })=>
         kioskUPSActivatedCount : 0
     });
 
+    // const [kioskTopbar, setKioskTopbar] = useState({
+    //     kioskOffline : [],
+    //     kioskStickerLow : [],
+    //     kioskUPSActivated : []
+    // });
+
+    const [tableData, setTableData] = useState([]);
+
     const dataTableHeading = [
         {
             lable : 'Index'
         },
         {
-            lable : 'User'
-        },
-        // {
-        //     lable : 'Action'
-        // }
-    ];
-
-    const dataTableData = [
-        {
-            userName : 'karthik'
+            lable : 'KioskID'
         },
         {
-            userName : 'Mani'
+            lable : 'DeviceNo'
         },
         {
-            userName : 'Ragu'
+            lable : 'LocationID'
+        },
+        {
+            lable : 'CustomerID'
         }
     ];
 
@@ -48,34 +60,37 @@ const DashboardTopbar=({ companyID })=>
     });
 
     useEffect(()=>{
-        console.log(companyID);
 
-        Promise.all([
-            getKioskOfflineTotal({companyID}).then((result)=>{
-                return result;
+        if(companyID != ''){
+
+            Promise.all([
+                getKioskOfflineTotal({companyID}).then((result)=>{
+                    return result;
+                }).catch((error)=>{
+                    console.log(error);
+                }),
+                getKioskStickerLowTotal({companyID}).then((result)=>{
+                    return result;
+                }).catch((error)=>{
+                    console.log(error);
+                }),
+                getKioskUPSActivatedTotal({companyID}).then((result)=>{
+                    return result;
+                }).catch((error)=>{
+                    console.log(error);
+                })
+            ]).then(([kioskOfflineTotal, kioskStickerLowTotal, kioskUPSActivatedTotal])=>{
+                let newObj = {
+                    kioskOfflineCount : kioskOfflineTotal[0]?.Total != undefined ? kioskOfflineTotal[0]?.Total : 0,
+                    kioskStickerLowCount : kioskStickerLowTotal[0]?.Total != undefined ? kioskStickerLowTotal[0]?.Total : 0,
+                    kioskUPSActivatedCount : kioskUPSActivatedTotal[0]?.Total != undefined ? kioskUPSActivatedTotal[0]?.Total : 0,
+                }
+                setKioskTopbarCount(newObj);
             }).catch((error)=>{
                 console.log(error);
-            }),
-            getKioskStickerLowTotal({companyID}).then((result)=>{
-                return result;
-            }).catch((error)=>{
-                console.log(error);
-            }),
-            getKioskUPSActivatedTotal({companyID}).then((result)=>{
-                return result;
-            }).catch((error)=>{
-                console.log(error);
-            })
-        ]).then(([kioskOfflineTotal, kioskStickerLowTotal, kioskUPSActivatedTotal])=>{
-            let newObj = {
-                kioskOfflineCount : kioskOfflineTotal[0]?.Total != undefined ? kioskOfflineTotal[0]?.Total : 0,
-                kioskStickerLowCount : kioskStickerLowTotal[0]?.Total != undefined ? kioskStickerLowTotal[0]?.Total : 0,
-                kioskUPSActivatedCount : kioskUPSActivatedTotal[0]?.Total != undefined ? kioskUPSActivatedTotal[0]?.Total : 0,
-            }
-            setKioskTopbarCount(newObj);
-        }).catch((error)=>{
-            console.log(error);
-        });
+            });
+
+        }
 
     },[companyID]);
     
@@ -87,7 +102,15 @@ const DashboardTopbar=({ companyID })=>
                     {/* <!-- Dashboard Details  --> */}
                     <div 
                         className="dashboard-count-sub-container d-flex ps-2 pe-4 py-2 me-3 align-items-center pointer"
-                        onClick={()=>{setPopupModal({ show:true, title: 'Offline' });}}
+                        onClick={()=>{
+                            setPopupModal({ show:true, title: 'Offline' });
+                            getKioskOffline({companyID}).then((result)=>{
+                                // setKioskTopbar(preObj => ({...preObj,'kioskOffline' : result}));
+                                setTableData(result);
+                            }).catch((error)=>{
+                                console.log(error);
+                            });
+                        }}
                     >
                         <div className="dashboard-count-value bg-red me-2">{ kioskTopbarCount.kioskOfflineCount }</div>
                         <div className="dashboard-count-name">Offline</div>
@@ -95,7 +118,15 @@ const DashboardTopbar=({ companyID })=>
                     </div>
                     <div 
                         className="dashboard-count-sub-container d-flex ps-2 pe-4 py-2 me-3 align-items-center pointer"
-                        onClick={()=>{setPopupModal({ show:true, title: 'UPS Activated' });}}
+                        onClick={()=>{
+                            setPopupModal({ show:true, title: 'UPS Activated' });
+                            getKioskUPSActivated({companyID}).then((result)=>{
+                                // setKioskTopbar(preObj => ({...preObj,'kioskUPSActivated' : result}));
+                                setTableData(result);
+                            }).catch((error)=>{
+                                console.log(error);
+                            });
+                        }}
                     >
                         <div className="dashboard-count-value bg-green me-2">{ kioskTopbarCount.kioskUPSActivatedCount }</div>
                         <div className="dashboard-count-name">UPS Activated</div>
@@ -103,7 +134,15 @@ const DashboardTopbar=({ companyID })=>
                     </div>
                     <div 
                         className="dashboard-count-sub-container d-flex ps-2 pe-4 py-2 me-3 align-items-center pointer"
-                        onClick={()=>{setPopupModal({ show:true, title: 'Sticker Low' });}}
+                        onClick={()=>{
+                            setPopupModal({ show:true, title: 'Sticker Low' });
+                            getKioskStickerLow({companyID}).then((result)=>{
+                                // setKioskTopbar(preObj => ({...preObj,'kioskStickerLow' : result}));
+                                setTableData(result);
+                            }).catch((error)=>{
+                                console.log(error);
+                            });
+                        }}
                     >
                         <div className="dashboard-count-value bg-yellow me-2">{ kioskTopbarCount.kioskStickerLowCount }</div>
                         <div className="dashboard-count-name">Sticker Low</div>
@@ -113,11 +152,11 @@ const DashboardTopbar=({ companyID })=>
             </div>
 
             <DashboardModal  
-                title={PopupModal.title + ' Kiosk List'} 
-                showPopup={PopupModal.show}
-                tableData={dataTableData} 
-                tableHeading={dataTableHeading}
-                changeModalShow={setPopupModal}
+                title           = {PopupModal.title + ' Kiosk List'} 
+                showPopup       = {PopupModal.show}
+                tableData       = {tableData} 
+                tableHeading    = {dataTableHeading}
+                changeModalShow = {setPopupModal}
             />
           </>;
 }
@@ -426,7 +465,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 1
                                             </div>
                                             <div className="box-content">
-                                                {/* <span>IN12345678</span> */}
+                                                <span>{ kisokBox?.[0]?.['CPNo'] }</span>
                                                 {/* <span>IN2345678989</span> */}
                                                 {/* <span>OUT12345678</span> */}
                                             </div>
@@ -436,7 +475,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 2
                                             </div>
                                             <div className="box-content">
-                                                
+                                                <span>{ kisokBox?.[1]?.['CPNo'] }</span>
                                             </div>
                                         </div>
                                         <div className={`box-3 box status-${ kisokBox?.[2]?.['Enable'] ? (kisokBox[3]['Enable'] == "Yes" ? "enabled" : "disabled") : "" }`}>
@@ -444,7 +483,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 3
                                             </div>
                                             <div className="box-content">
-                                                {/* <span>IN12345678</span> */}
+                                                <span>{ kisokBox?.[2]?.['CPNo'] }</span>
                                                 {/* <span>IN2345678989</span> */}
                                                 {/* <span>OUT12345678</span> */}
                                             </div>
@@ -454,7 +493,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 4
                                             </div>
                                             <div className="box-content">
-                                                {/* <span>IN12345678</span> */}
+                                                <span>{ kisokBox?.[3]?.['CPNo'] }</span>
                                                 {/* <span>IN2345678989</span> */}
                                                 {/* <span>OUT12345678</span> */}
                                             </div>
@@ -464,6 +503,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 5
                                             </div>
                                             <div className="box-content">
+                                                <span>{ kisokBox?.[4]?.['CPNo'] }</span>
                                             </div>
                                         </div>
                                         <div className={`box-6 box status-${ kisokBox?.[5]?.['Enable'] ? (kisokBox[5]['Enable'] == "Yes" ? "enabled" : "disabled") : "" }`}>
@@ -471,6 +511,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 6
                                             </div>
                                             <div className="box-content">
+                                                <span>{ kisokBox?.[5]?.['CPNo'] }</span>
                                             </div>
                                         </div>
                                         <div className="box-0 no-storage">
@@ -490,6 +531,7 @@ const DashboardKiosStatus=({KioskID})=>
                                                 7
                                             </div>
                                             <div className="box-content">
+                                                <span>{ kisokBox?.[6]?.['CPNo'] }</span>
                                             </div>
                                         </div>
                                         <div className="mail-drop">
